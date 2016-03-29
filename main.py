@@ -1,6 +1,6 @@
 from display import *
 from draw import *
-from parser import *
+from parsy import *
 from matrix import *
 import sys
 
@@ -12,5 +12,5 @@ transform = new_matrix()
 if len(sys.argv) == 2:
     f = open(sys.argv[1])
 
-parse_file( f, points, transform, screen, color )
+parse_file( f, edges, transform, screen, color )
 f.close()
