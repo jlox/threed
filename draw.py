@@ -24,41 +24,40 @@ def add_sphere( points, cx, cy, cz, r, step ):
     i = 0
     generate_sphere(babymatrix, cx, cy, cz, r, step)
     while i < len(babymatrix):
-        x = babymatrix[i][0]
-        y = babymatrix[i][1]
-        z = babymatrix[i][2]
-        add_edge(points, x, y, z, x, y, z)
-        i+=1
+        points.append(babymatrix[i])
+        i +=1
 
 def generate_sphere( points, cx, cy, cz, r, step ):
-    t = step
-    while t<=1:
-        x = r * math.cos(math.pi * t) + cx
-        y = r * math.sin(math.pi * t) + cy
-        z = r * math.sin(math.pi * t) + cz
-        add_point(points, x, y, z)
-        t+=step
+    p = 0
+    t = 0
+    while p<=1:
+        while t<=1:
+            x = r * math.cos(math.pi * t) + cx
+            y = (r * math.sin(math.pi * t) * math.cos(2 * math.pi * p))  + cy
+            z = (r * math.sin(math.pi * t) * math.sin(2 * math.pi * p)) + cz
+            add_point(points, x, y, z)
+            add_point(points, x, y, z)
+            t+=step
+        p+=step
 
 def add_torus( points, cx, cy, cz, r0, r1, step ):
     babymatrix = new_matrix()
     i = 0
     generate_torus(babymatrix, cx, cy, cz, r0, r1, step)
     while i < len(babymatrix):
-        x = babymatrix[i][0]
-        y = babymatrix[i][1]
-        z = babymatrix[i][2]
-        add_edge(points, x, y, z, x, y, z)
-        i+=1
+        points.append(babymatrix[i]
+    i+=1
 
 def generate_torus( points, cx, cy, cz, r0, r1, step ):
     p = 0
     q = 0
-    while p < 1.001:
-        while q < 1.001:
+    while p < 1:
+        while q < 1:
             x = r0 * math.cos(2 * math.pi * q) + cx 
             y = ( math.cos(2 * math.pi * p) * ( (r0 * math.sin(2 * math.pi * q)) + r1 ) ) + cy
             z = ( math.sin(2 * math.pi * p) * ( (r0 * math.sin(2 * math.pi * q)) + r1) ) + cz
-            add_edge(points, x, y, z, x, y, z)
+            add_point(points, x, y, z)
+            add_point(points, x, y, z)
             q += step
         p += step
 
