@@ -44,10 +44,10 @@ def parse_file( f, points, transform, screen, color ):
                 add_box(points, args[0], args[1], args[2], args[3], args[4], args[5])
                 
             elif cmd == 'sphere':
-                add_sphere(points, args[0], args[1], args[2], args[3], args[4])
+                add_sphere(points, args[0], args[1], args[2], args[3], .01)
 
             elif cmd == 'torus':
-                add_torus(points, args[0], args[1], args[2], args[3], args[4])
+                add_torus(points, args[0], args[1], args[2], args[3], .01)
 
             else:
                 angle = args[0] * ( math.pi / 180 )
