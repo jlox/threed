@@ -30,9 +30,9 @@ def add_sphere( points, cx, cy, cz, r, step ):
 def generate_sphere( points, cx, cy, cz, r, step ):
     p = 0
     t = 0
-    while p<=1:
-        while t<=1:
-            x = r * math.cos(math.pi * t) + cx
+    while (p<=1):
+        while (t<=1):
+            x = (r * math.cos(math.pi * t) )+ cx
             y = (r * math.sin(math.pi * t) * math.cos(2 * math.pi * p))  + cy
             z = (r * math.sin(math.pi * t) * math.sin(2 * math.pi * p)) + cz
             add_point(points, x, y, z)
@@ -45,14 +45,14 @@ def add_torus( points, cx, cy, cz, r0, r1, step ):
     i = 0
     generate_torus(babymatrix, cx, cy, cz, r0, r1, step)
     while i < len(babymatrix):
-        points.append(babymatrix[i]
+        points.append(babymatrix[i])
     i+=1
 
 def generate_torus( points, cx, cy, cz, r0, r1, step ):
     p = 0
     q = 0
-    while p < 1:
-        while q < 1:
+    while (p <=1):
+        while (q <= 1):
             x = r0 * math.cos(2 * math.pi * q) + cx 
             y = ( math.cos(2 * math.pi * p) * ( (r0 * math.sin(2 * math.pi * q)) + r1 ) ) + cy
             z = ( math.sin(2 * math.pi * p) * ( (r0 * math.sin(2 * math.pi * q)) + r1) ) + cz
